@@ -1,5 +1,6 @@
 package com.denailry.activitylifecycle
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +9,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     companion object {
-        const val TAG_LIFECYLCE = "lifecycle"
         const val VALID_USERNAME = "daniel"
         const val VALID_PASSWORD = "qwerty"
     }
@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         btn_login.setOnClickListener{
             if (validCredential()) {
                 Toast.makeText(applicationContext, "successfully logged in", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(applicationContext, HomeActivity::class.java))
             } else {
                 Toast.makeText(applicationContext, "oops... invalid credentials", Toast.LENGTH_SHORT).show()
             }
@@ -36,27 +37,27 @@ class MainActivity : AppCompatActivity() {
      }
 
     override fun onStart() {
-        Log.d(TAG_LIFECYLCE, "${javaClass.simpleName} + is started!")
+        Log.d(Common.TAG_LIFECYLCE, "${javaClass.simpleName} + is started!")
         super.onStart()
     }
 
     override fun onResume() {
-        Log.d(TAG_LIFECYLCE, "${javaClass.simpleName} + is resumed!")
+        Log.d(Common.TAG_LIFECYLCE, "${javaClass.simpleName} + is resumed!")
         super.onResume()
     }
 
     override fun onPause() {
-        Log.d(TAG_LIFECYLCE, "${javaClass.simpleName} + is paused!")
+        Log.d(Common.TAG_LIFECYLCE, "${javaClass.simpleName} + is paused!")
         super.onPause()
     }
 
     override fun onStop() {
-        Log.d(TAG_LIFECYLCE, "${javaClass.simpleName} + is stoped!")
+        Log.d(Common.TAG_LIFECYLCE, "${javaClass.simpleName} + is stoped!")
         super.onStop()
     }
 
     override fun onDestroy() {
-        Log.d(TAG_LIFECYLCE, "${javaClass.simpleName} + is destroyed!")
+        Log.d(Common.TAG_LIFECYLCE, "${javaClass.simpleName} + is destroyed!")
         super.onDestroy()
     }
 }
