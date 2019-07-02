@@ -14,8 +14,8 @@ abstract class LoginHandler {
     abstract fun handle(username: String, password: String) : Account?
 
     fun addHandler(handler: LoginHandler) : LoginHandler {
-        nextHandler = handler
-        return this
+        handler.nextHandler = this
+        return handler
     }
 
     private class InvalidHandler : LoginHandler() {
