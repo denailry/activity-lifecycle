@@ -6,7 +6,7 @@ abstract class LoginHandler {
     protected var nextHandler: LoginHandler? = null
 
     companion object {
-        fun new() : LoginHandler {
+        fun instance() : LoginHandler {
             return InvalidHandler()
         }
     }

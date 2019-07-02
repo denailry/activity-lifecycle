@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupClickListener()
         Log.d(Common.TAG_LIFECYLCE, "${javaClass.simpleName} + is created!")
-        loginHandler = LoginHandler.new()
+        loginHandler = LoginHandler.instance()
             .addHandler(CustomerHandler())
             .addHandler(MerchantHandler())
     }
