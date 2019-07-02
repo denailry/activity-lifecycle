@@ -5,37 +5,41 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.denailry.activitylifecycle.loginhandler.CustomerHandler
+import com.denailry.activitylifecycle.loginhandler.LoginHandler
+import com.denailry.activitylifecycle.loginhandler.MerchantHandler
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        const val VALID_USERNAME = "daniel"
-        const val VALID_PASSWORD = "qwerty"
-    }
+    lateinit var loginHandler: LoginHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupClickListener()
         Log.d(Common.TAG_LIFECYLCE, "${javaClass.simpleName} + is created!")
+        loginHandler = LoginHandler.new()
+            .addHandler(CustomerHandler())
+            .addHandler(MerchantHandler())
     }
 
     private fun setupClickListener() {
         buttonLogin.setOnClickListener{
-            if (validCredential()) {
+            val username = formUsername.text.toString()
+            val password = formPassword.text.toString()
+            val account = loginHandler.handle(username, password)
+
+            if (account != null) {
+                val intent = Intent(applicationContext, HomeActivity::class.java)
+                intent.putExtra("account", account.toString())
+                startActivity(intent)
+
                 Toast.makeText(applicationContext, "successfully logged in", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(applicationContext, HomeActivity::class.java))
             } else {
                 Toast.makeText(applicationContext, "oops... invalid credentials", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-    private fun validCredential() : Boolean {
-        val username = formUsername.text.toString()
-        val password = formPassword.text.toString()
-        return username == VALID_USERNAME && password == VALID_PASSWORD
-     }
 
     override fun onStart() {
         Log.d(Common.TAG_LIFECYLCE, "${javaClass.simpleName} + is started!")
