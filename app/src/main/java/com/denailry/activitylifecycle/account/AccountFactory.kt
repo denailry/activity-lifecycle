@@ -7,7 +7,7 @@ class AccountFactory {
             return when (attributes[0]) {
                 AccountType.CUSTOMER.toString() -> {
                     val customer = Customer(attributes[1], attributes[2])
-                    customer.occupation = attributes[2]
+                    customer.occupation = attributes[3]
                     customer
                 }
                 AccountType.MERCHANT.toString() -> {
