@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupClickListener()
+        Log.d(Common.TAG_LIFECYLCE, "${javaClass.simpleName} + is created!")
     }
 
     private fun setupClickListener() {

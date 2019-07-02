@@ -8,6 +8,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        Log.d(Common.TAG_LIFECYLCE, "${javaClass.simpleName} + is created!")
     }
 
     override fun onStart() {
