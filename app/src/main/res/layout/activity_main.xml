@@ -9,18 +9,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
         <EditText
-                android:id="@+id/in_username"
+                android:id="@+id/formUsername"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:hint="@string/username"/>
         <EditText
-                android:id="@+id/in_password"
+                android:id="@+id/formPassword"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:hint="@string/password"/>
         <Button
-                android:id="@+id/btn_login"
+                android:id="@+id/buttonLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login"

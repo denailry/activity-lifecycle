@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupClickListener() {
-        btn_login.setOnClickListener{
+        buttonLogin.setOnClickListener{
             if (validCredential()) {
                 Toast.makeText(applicationContext, "successfully logged in", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(applicationContext, HomeActivity::class.java))
@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun validCredential() : Boolean {
-        val username = in_username.text.toString()
-        val password = in_password.text.toString()
+        val username = formUsername.text.toString()
+        val password = formPassword.text.toString()
         return username == VALID_USERNAME && password == VALID_PASSWORD
      }
 
